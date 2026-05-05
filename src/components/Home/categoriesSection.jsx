@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShirt } from '@fortawesome/free-solid-svg-icons';
+import bins from '../../assets/bins.svg';
 
 // --- MOCK DATA ---
 const categories = [
@@ -13,7 +14,12 @@ const categories = [
   { id: "ppe", label: "Non woven Disposable Essentials PPE", icon: <FontAwesomeIcon icon={faShirt} color="#87CEEB" /> },
   { id: "promotions", label: "Promotional Give Always", icon: "🎁" },
   { id: "cleaning", label: "Cleaning Equipments & Accessories", icon: "🧹" },
-  { id: "bins", label: "Bins & Trolleys", icon: "🛒" },
+
+{
+  id: "bins",
+  label: "Bins & Trolleys",
+  icon: <img src={bins} alt="trolley" style={{ width: 35, height: 35 }} />,
+},
   { id: "fuel", label: "Chafing Fuel & Charcoals", icon: "🔥" },
 ];
 

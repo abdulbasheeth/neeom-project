@@ -148,18 +148,18 @@ const Header = () => {
       <nav
         ref={headerRef}
         className={`
-          fixed left-0 right-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]
+          fixed left-0 right-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] 
           ${scrolled 
               ? `
-                top-2 md:top-3 lg:top-4 
-                mx-auto 
-                w-[95%] md:w-[92%] lg:w-[95%] lg:max-w-7xl 
-                bg-white/85 backdrop-blur-xl 
-                shadow-[0_10px_40px_-10px_rgba(0,0,0,0.15)] 
-                border border-white/60 
-                rounded-2xl md:rounded-3xl lg:rounded-[3rem]
-                ` 
-              : "top-0 bg-white/95 backdrop-blur-sm border-b border-gray-100"
+                 top-2 md:top-3 lg:top-4 
+    mx-auto 
+    w-[95%] md:w-[92%] lg:w-[95%] lg:max-w-7xl 
+    bg-white/85 backdrop-blur-xl 
+shadow-[0_10px_30px_-10px_rgba(0,0,0,0.15),0_25px_40px_-8px_rgba(0,132,209,0.8)]
+    border border-white/60 
+    rounded-2xl md:rounded-3xl lg:rounded-[3rem]
+  ` 
+  : "top-0 bg-white/95 backdrop-blur-sm border-b border-gray-100"
           }
         `}
         aria-label="Main navigation"
@@ -167,7 +167,7 @@ const Header = () => {
         <div className="mx-auto px-1 sm:px-3 lg:px-4">
           <div 
             className={`
-              flex items-center justify-between transition-all duration-300
+              flex items-center justify-between transition-all duration-300 
               ${scrolled ? "lg:py-1 py-1" : "lg:py-2 py-1.5"}  // REDUCED HEIGHT HERE
             `}
           >
@@ -181,31 +181,35 @@ const Header = () => {
     src={neomLogo}
     alt="NEOM Hospitality Supplies"
     className="transition-all duration-500 h-auto object-contain flex-shrink-0"
-    style={{ height: scrolled ? "50px" : "60px" }} 
+    style={{ height: scrolled ? "60px" : "80px" }} 
   />
-  <div className="flex flex-col leading-tight min-w-0 w-full justify-center">
+<div className="flex flex-col leading-tight min-w-0 w-full justify-center">
 
   {/* Arabic */}
-  <span
-    className={`font-[Cairo] text-gray-600 font-semibold truncate transition-all duration-300 block leading-tight ${
-      scrolled
-        ? "text-[10px] sm:text-[11px] md:text-base"
-        : "text-xs sm:text-sm md:text-base lg:text-xl"
-    }`}
-  >
-    نيوم لمستلزمات الضيافة ذ.م.م
-  </span>
+ <span
+  className="
+    font-[Cairo] text-gray-900 block
+    text-sm sm:text-base md:text-lg lg:text-3xl
+    font-semibold sm:font-semibold lg:font-semibold
+    scale-x-105 sm:scale-100
+  "
+  style={{
+    WebkitTextStroke: "0.3px black",
+  }}
+>
+  نيوم لمستلزمات الضيافة ذ.م.م
+</span>
 
   {/* English */}
   <span
-    className={`text-gray-600 uppercase font-semibold truncate transition-all duration-300 block leading-tight tracking-normal ${
-      scrolled
-        ? "text-[10px] sm:text-[11px] md:text-base"
-        : "text-xs sm:text-sm md:text-base lg:text-xl"
-    }`}
+    className={`text-gray-900 uppercase font-semibold truncate block leading-tight
+      ${scrolled ? "opacity-90" : "opacity-100"}
+      text-xs sm:text-sm md:text-base lg:text-2xl`}
   >
     Neom Hospitality Supplies LLC
   </span>
+
+
 
 </div>
 </Link>
@@ -217,7 +221,7 @@ const Header = () => {
                   key={link.path}
                   href={link.isHash ? `/#${link.elementId}` : link.path}
                   onClick={(e) => handleNavClick(e, link)}
-                  className="relative px-3 py-1.5 text-sm font-medium rounded-full transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-sky-500 text-gray-600 hover:text-sky-700 hover:bg-sky-50"
+                  className="relative px-3 py-1.5 text-sm font-medium rounded-full transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-sky-500 text-gray-600 hover:text-white hover:bg-[#0084D1]"
                 >
                   {link.label}
                 </a>

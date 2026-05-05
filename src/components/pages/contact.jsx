@@ -36,10 +36,10 @@ const ContactSection = () => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          observer.disconnect(); // Optional: Run animation only once
+          observer.disconnect();
         }
       },
-      { threshold: 0.15 } // Trigger when 15% of the section is visible
+      { threshold: 0.15 }
     );
 
     if (sectionRef.current) {
@@ -154,6 +154,7 @@ const ContactSection = () => {
                   : 'opacity-0 -translate-x-16'
               }`}
             >
+              {/* Removed extra wrapper div to ensure consistent gaps with right column */}
               <div className="space-y-5">
                 <InfoCard
                   icon={<MapPin size={20} />}
@@ -173,11 +174,11 @@ const ContactSection = () => {
                   title="Email Us"
                   body={
                     <>
-                      <a href="mailto:info@neomhs.com" className="text-blue-700 hover:text-blue-800">
+                      <a href="mailto:info@neomhs.com" className="text-blue-700 hover:text-blue-800 break-all">
                         info@neomhotelssupplies.com
                       </a>
                       <br />
-                      <a href="mailto:sales@neomhs.com" className="text-blue-700 hover:text-blue-800">
+                      <a href="mailto:sales@neomhs.com" className="text-blue-700 hover:text-blue-800 break-all">
                         neomhospitalitydxb@gmail.com
                       </a>
                     </>
@@ -204,12 +205,12 @@ const ContactSection = () => {
                   }
                 />
 
-                {/* Google Maps Card */}
+                {/* Google Maps Card - now full width with consistent container styling */}
                 <a
                   href="https://www.google.com/maps/place/25%C2%B015'52.4%22N+55%C2%B017'30.5%22E/@25.2645454,55.2892189,17z/data=!3m1!4b1!4m4!3m3!8m2!3d25.2645454!4d55.2917938?hl=en&entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block mt-1 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-lg"
+                  className="block rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-lg"
                 >
                   <div className="bg-white rounded-2xl overflow-hidden h-48 relative">
                     <iframe
@@ -404,12 +405,12 @@ const ContactSection = () => {
   );
 };
 
-/* InfoCard Subcomponent */
+/* InfoCard Subcomponent - Updated with consistent padding */
 const InfoCard = ({ icon, title, body }) => {
   const [hovered, setHovered] = useState(false);
   return (
     <div
-      className={`bg-white rounded-2xl p-7 flex gap-5 items-start transition-all duration-300 cursor-default ${
+      className={`bg-white rounded-2xl p-8 flex gap-5 items-start transition-all duration-300 cursor-default ${
         hovered ? 'border border-blue-200 shadow-xl -translate-y-0.5' : 'shadow-sm border border-transparent'
       }`}
       onMouseEnter={() => setHovered(true)}

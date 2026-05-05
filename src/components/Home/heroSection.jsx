@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../Ui/button";
 import { ArrowRight } from "lucide-react";
-import herovideo from "../../assets/hero-video.mp4";
+import herovideo from "../../../public/hero-video.mp4"
 import { motion } from "framer-motion";
 
 const HeroSection = () => {
@@ -37,8 +37,12 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-slate-900"
-      style={{ paddingTop: "var(--header-total-height, 0px)" }}
+      className="relative w-full flex items-center justify-center overflow-hidden bg-slate-900 mt-5"
+      style={{
+        boxSizing: 'border-box',
+        minHeight: '100vh',
+        paddingTop: "var(--header-total-height, 0px)"
+      }}
     >
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full z-0">
@@ -55,7 +59,7 @@ const HeroSection = () => {
       </div>
 
       {/* Gradient Overlay - ensures text is readable */}
-      <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/30 via-black/50 to-black/80 md:from-black/40 md:via-black/50 md:to-black/80 pointer-events-none" />
+      <div className="absolute inset-0 z-10 one" />
 
       {/* Main Content */}
       <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -82,7 +86,7 @@ const HeroSection = () => {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white drop-shadow-lg px-2 leading-tight break-words"
           >
             Premium Supplies for
-            <br className="hidden sm:block" /> {/* Break line only on tablet+ */}
+            <br className="hidden sm:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-200 via-sky-300 to-sky-500">
               World Class Hospitality
             </span>
@@ -126,14 +130,16 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - now reliably at the bottom edge of the screen */}
       <div
-        className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 cursor-pointer z-20 group pb-2"
+        className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 cursor-pointer z-20 group pb-2 px-4"
         onClick={scrollToAbout}
         aria-label="Scroll to next section"
       >
         <div className="flex flex-col items-center gap-2 animate-move-up-down">
-          <span className="text-white/60 text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300">Scroll</span>
+          <span className="text-white/60 text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+            Scroll
+          </span>
           <ArrowRight className="w-6 h-6 text-white/80 group-hover:text-sky-300 transition-colors" style={{ transform: 'rotate(90deg)' }} />
         </div>
       </div>
