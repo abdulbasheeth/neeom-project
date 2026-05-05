@@ -27,7 +27,6 @@ const ContactSection = () => {
   const [errors, setErrors] = useState({});
   const [showToast, setShowToast] = useState(false);
 
-  // --- Animation Logic ---
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -41,16 +40,11 @@ const ContactSection = () => {
       },
       { threshold: 0.15 }
     );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => {
       if (sectionRef.current) observer.unobserve(sectionRef.current);
     };
   }, []);
-  // ---------------------
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -119,43 +113,39 @@ const ContactSection = () => {
 
   return (
     <>
-      <section 
-        id='contact' 
+      <section
+        id='contact'
         ref={sectionRef}
-        className="bg-gradient-to-b from-blue-50 to-white py-24 px-6 font-sans text-slate-800 overflow-hidden"
+        className="bg-gradient-to-b from-blue-50 to-white py-16 md:py-24 px-6 font-sans text-slate-800 overflow-hidden"
       >
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 md:mb-16">
             <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-blue-700 bg-blue-100 px-5 py-2 rounded-full mb-5">
               <span className="w-1.5 h-1.5 bg-blue-500 rounded-full" />
               Get In Touch
             </div>
-            <h2 className="text-4xl font-semibold tracking-tight mb-4">
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4">
               Let's Start a{' '}
               <span className="bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent">
                 Conversation
               </span>
             </h2>
-            <p className="text-lg text-slate-500 max-w-xl mx-auto">
+            <p className="text-base md:text-lg text-slate-500 max-w-xl mx-auto px-4">
               Have a question about our hospitality supplies? We'd love to hear
               from you. Send us a message and we'll respond promptly.
             </p>
           </div>
 
           {/* Grid */}
-          <div className="grid md:grid-cols-2 gap-12 items-start">
-            
-            {/* Left: Info Cards - Slides in from Left */}
-            <div 
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+            {/* Left: Info Cards */}
+            <div
               className={`${transitionBase} ${
-                isVisible 
-                  ? 'opacity-100 translate-x-0' 
-                  : 'opacity-0 -translate-x-16'
+                isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-16'
               }`}
             >
-              {/* Removed extra wrapper div to ensure consistent gaps with right column */}
-              <div className="space-y-5">
+              <div className="space-y-4 md:space-y-5">
                 <InfoCard
                   icon={<MapPin size={20} />}
                   title="Our Office"
@@ -205,28 +195,27 @@ const ContactSection = () => {
                   }
                 />
 
-                {/* Google Maps Card - now full width with consistent container styling */}
+                {/* Google Maps Card */}
                 <a
                   href="https://www.google.com/maps/place/25%C2%B015'52.4%22N+55%C2%B017'30.5%22E/@25.2645454,55.2892189,17z/data=!3m1!4b1!4m4!3m3!8m2!3d25.2645454!4d55.2917938?hl=en&entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-lg"
                 >
-                  <div className="bg-white rounded-2xl overflow-hidden h-48 relative">
-                    <iframe
-                      title={`NEOM Hospitality Supplies LLC – 25°15'52.4"N 55°17'30.5"E`}
-                      src="https://maps.google.com/maps?q=25.2645454,55.2917938&z=17&output=embed"
-                      className="w-full h-full border-0 saturate-[0.85] contrast-[1.05] pointer-events-none"
-                      allowFullScreen
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                    />
-                    <div className="absolute bottom-0 left-0 right-0 p-3.5 bg-gradient-to-t from-blue-800/75 via-blue-800/30 to-transparent flex items-center gap-3 text-white text-sm font-medium">
-                      <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30">
+                  <div className="bg-white rounded-2xl overflow-hidden h-48 md:h-56 relative">
+     <iframe
+  title="NEOM Hospitality Supplies LLC – 25°15'52.4&quot;N 55°17'30.5&quot;E"
+  src="https://maps.google.com/maps?q=25.2645454,55.2917938&z=17&output=embed"
+  className="w-full h-full border-0 saturate-[0.85] contrast-[1.05]"
+  allowFullScreen
+  loading="lazy"
+  referrerPolicy="no-referrer-when-downgrade"
+/>              <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-blue-800/75 via-blue-800/30 to-transparent flex items-center gap-3 text-white text-sm font-medium">
+                      <div className="flex-shrink-0 w-8 h-8 md:w-9 md:h-9 rounded-lg bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30">
                         <Navigation size={14} />
                       </div>
                       <div>
-                        <div className="text-sm font-semibold">NEOM Hospitality Supplies LLC</div>
+                        <div className="text-xs md:text-sm font-semibold">NEOM Hospitality Supplies LLC</div>
                         <div className="text-xs font-normal text-white/85 flex items-center">
                           25°15'52.4"N 55°17'30.5"E – Get directions
                           <ExternalLink size={11} className="ml-1" />
@@ -238,17 +227,15 @@ const ContactSection = () => {
               </div>
             </div>
 
-            {/* Right: Contact Form - Slides in from Right */}
-            <div 
+            {/* Right: Contact Form */}
+            <div
               className={`${transitionBase} delay-200 ${
-                isVisible 
-                  ? 'opacity-100 translate-x-0' 
-                  : 'opacity-0 translate-x-16'
+                isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-16'
               }`}
             >
-              <div className="bg-white border border-blue-100 rounded-2xl p-8 md:p-10 shadow-xl h-full">
-                <h3 className="text-2xl font-semibold mb-1">Send Us a Message</h3>
-                <p className="text-sm text-slate-500 mb-8">
+              <div className="bg-white border border-blue-100 rounded-2xl p-6 md:p-10 shadow-xl h-full">
+                <h3 className="text-xl md:text-2xl font-semibold mb-1">Send Us a Message</h3>
+                <p className="text-sm text-slate-500 mb-6 md:mb-8">
                   Fill out the form below — it will open WhatsApp with all your details pre-filled.
                 </p>
 
@@ -389,7 +376,7 @@ const ContactSection = () => {
 
       {/* Toast Notification */}
       <div
-        className={`fixed bottom-8 right-8 bg-white border border-blue-100 border-l-4 border-l-green-500 rounded-xl p-4 flex items-center gap-3 shadow-2xl transition-all duration-500 z-50 ${
+        className={`fixed bottom-4 right-4 md:bottom-8 md:right-8 bg-white border border-blue-100 border-l-4 border-l-green-500 rounded-xl p-4 flex items-center gap-3 shadow-2xl transition-all duration-500 z-50 max-w-[calc(100vw-2rem)] md:max-w-none ${
           showToast ? 'translate-y-0 opacity-100' : 'translate-y-32 opacity-0'
         }`}
       >
@@ -405,23 +392,23 @@ const ContactSection = () => {
   );
 };
 
-/* InfoCard Subcomponent - Updated with consistent padding */
+// InfoCard component with responsive padding and icon size
 const InfoCard = ({ icon, title, body }) => {
   const [hovered, setHovered] = useState(false);
   return (
     <div
-      className={`bg-white rounded-2xl p-8 flex gap-5 items-start transition-all duration-300 cursor-default ${
+      className={`bg-white rounded-2xl p-6 md:p-8 flex gap-4 md:gap-5 items-start transition-all duration-300 cursor-default ${
         hovered ? 'border border-blue-200 shadow-xl -translate-y-0.5' : 'shadow-sm border border-transparent'
       }`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-blue-700 to-blue-500 flex items-center justify-center text-white shadow-md">
+      <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br from-blue-700 to-blue-500 flex items-center justify-center text-white shadow-md">
         {icon}
       </div>
       <div>
         <h4 className="text-sm font-semibold mb-1.5">{title}</h4>
-        <p className="text-sm text-slate-500 leading-relaxed">{body}</p>
+        <p className="text-xs md:text-sm text-slate-500 leading-relaxed">{body}</p>
       </div>
     </div>
   );

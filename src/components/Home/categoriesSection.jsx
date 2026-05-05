@@ -4,23 +4,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShirt } from '@fortawesome/free-solid-svg-icons';
 import bins from '../../assets/bins.svg';
 
-// --- MOCK DATA ---
+// --- MOCK DATA (FIXED: all icons now centered) ---
 const categories = [
-  { id: "amenities", label: "Guest Amenities & Equipments", icon: "🧴" },
-  { id: "linens", label: "Bed & Bath Linens", icon: "🛏️" },
-  { id: "chemicals", label: "Laundry Chemicals & Accessories", icon: "🫙" },
-  { id: "eco-bags", label: "Eco-Friendly Sustainable Bags", icon: "♻️" },
-  { id: "non-woven", label: "Non Woven Bags & Covers", icon: "🛍️" },
-  { id: "ppe", label: "Non woven Disposable Essentials PPE", icon: <FontAwesomeIcon icon={faShirt} color="#87CEEB" /> },
-  { id: "promotions", label: "Promotional Give Always", icon: "🎁" },
-  { id: "cleaning", label: "Cleaning Equipments & Accessories", icon: "🧹" },
-
-{
-  id: "bins",
-  label: "Bins & Trolleys",
-  icon: <img src={bins} alt="trolley" style={{ width: 35, height: 35 }} />,
-},
-  { id: "fuel", label: "Chafing Fuel & Charcoals", icon: "🔥" },
+  { id: "amenities", label: "Guest Amenities & Equipments", icon: <span className="block text-base md:text-lg leading-none">🧴</span> },
+  { id: "linens", label: "Bed & Bath Linens", icon: <span className="block text-base md:text-lg leading-none">🛏️</span> },
+  { id: "chemicals", label: "Laundry Chemicals & Accessories", icon: <span className="block text-base md:text-lg leading-none">🫙</span> },
+  { id: "eco-bags", label: "Eco-Friendly Sustainable Bags", icon: <span className="block text-base md:text-lg leading-none">♻️</span> },
+  { id: "non-woven", label: "Non Woven Bags & Covers", icon: <span className="block text-base md:text-lg leading-none">🛍️</span> },
+  { id: "ppe", label: "Non woven Disposable Essentials PPE", icon: <FontAwesomeIcon icon={faShirt} className="w-4 h-4 md:w-5 md:h-5 block text-sky-500 group-hover:text-white" /> },
+  { id: "promotions", label: "Promotional Give Always", icon: <span className="block text-base md:text-lg leading-none">🎁</span> },
+  { id: "cleaning", label: "Cleaning Equipments & Accessories", icon: <span className="block text-base md:text-lg leading-none">🧹</span> },
+  {
+    id: "bins",
+    label: "Bins & Trolleys",
+    icon: <img src={bins} alt="trolley" className="w-5 h-5 md:w-6 md:h-6 object-contain block mx-auto" />,
+  },
+  { id: "fuel", label: "Chafing Fuel & Charcoals", icon: <span className="block text-base md:text-lg leading-none">🔥</span> },
 ];
 
 // --- MOCK UI COMPONENTS ---
@@ -31,7 +30,7 @@ const ScrollReveal = ({ children, className }) => {
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => setIsVisible(entry.isIntersecting));
-    }, { threshold: 0.1 }); // Trigger when 10% visible
+    }, { threshold: 0.1 });
     
     const currentElement = domRef.current;
     if (currentElement) observer.observe(currentElement);
@@ -52,7 +51,7 @@ const ScrollReveal = ({ children, className }) => {
   );
 };
 
-const StaggerContainer = ({ children, className, staggerDelay = 0 }) => {
+const StaggerContainer = ({ children, className }) => {
   return <div className={className}>{children}</div>;
 };
 
@@ -74,7 +73,7 @@ if (typeof document !== 'undefined') {
     html { scroll-behavior: smooth; }
     .animate-stagger-item {
       animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      opacity: 0; /* Ensure hidden before animation */
+      opacity: 0;
       transform: translateY(20px);
     }
     @keyframes fadeInUp {
@@ -87,7 +86,6 @@ if (typeof document !== 'undefined') {
   document.head.appendChild(styleSheet);
 }
 // --- END MOCKS ---
-
 
 const BubbleBackground = () => {
   const bubbles = Array.from({ length: 20 }).map((_, i) => {
@@ -128,11 +126,9 @@ const BubbleBackground = () => {
 };
 
 const CategoriesSection = () => {
-  // Page Load Transition State
   const [isPageLoaded, setIsPageLoaded] = useState(false);
 
   useEffect(() => {
-    // Small delay to ensure the browser paints before transitioning
     const timer = setTimeout(() => {
       setIsPageLoaded(true);
     }, 100);
@@ -141,7 +137,6 @@ const CategoriesSection = () => {
 
   return (
     <section 
-      // Added Page Load Transition classes here
       className={`relative pt-8 pb-16 md:pt-12 md:pb-24 bg-[#F0F4FA] overflow-hidden mt-16 transition-all duration-1000 ease-out transform ${
         isPageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
@@ -229,7 +224,6 @@ const CategoriesSection = () => {
         {/* Category Grid */}
         <StaggerContainer
           className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4"
-          staggerDelay={0.08}
         >
           {categories.map((cat, index) => (
             <StaggerItem key={cat.id} delay={index * 0.08}>
@@ -240,9 +234,9 @@ const CategoriesSection = () => {
                 {/* Top Hover Line */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-gradient-to-r from-transparent via-sky-400 to-transparent group-hover:w-full transition-all duration-500 ease-out" />
                 
-                {/* Icon Container */}
-                <div className="relative mb-2 flex items-center justify-center w-7 h-7 md:w-8 md:h-8 rounded-lg bg-sky-50 border border-sky-100 text-base md:text-xl transition-all duration-500 group-hover:bg-sky-500 group-hover:scale-110 group-hover:border-sky-500 group-hover:shadow-lg">
-                  <span className="transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6 text-sky-500 group-hover:text-white filter drop-shadow-sm">
+                {/* Icon Container - perfect centering on all screens */}
+                <div className="relative mb-2 flex items-center justify-center w-7 h-7 md:w-8 md:h-8 rounded-lg bg-sky-50 border border-sky-100 transition-all duration-500 group-hover:bg-sky-500 group-hover:scale-110 group-hover:border-sky-500 group-hover:shadow-lg">
+                  <span className="transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6 text-sky-500 group-hover:text-white filter drop-shadow-sm flex items-center justify-center w-full h-full">
                     {cat.icon}
                   </span>
                 </div>

@@ -157,7 +157,7 @@ const Header = () => {
     bg-white/85 backdrop-blur-xl 
 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.15),0_25px_40px_-8px_rgba(0,132,209,0.8)]
     border border-white/60 
-    rounded-2xl md:rounded-3xl lg:rounded-[3rem]
+    rounded-[3rem] md:rounded-[3rem] lg:rounded-[3rem]
   ` 
   : "top-0 bg-white/95 backdrop-blur-sm border-b border-gray-100"
           }
@@ -188,10 +188,11 @@ shadow-[0_10px_30px_-10px_rgba(0,0,0,0.15),0_25px_40px_-8px_rgba(0,132,209,0.8)]
   {/* Arabic */}
  <span
   className="
-    font-[Cairo] text-gray-900 block
+     font-[Cairo] text-gray-900 block
     text-sm sm:text-base md:text-lg lg:text-3xl
-    font-semibold sm:font-semibold lg:font-semibold
+    font-semibold
     scale-x-105 sm:scale-100
+    pl-1 lg:pl-0
   "
   style={{
     WebkitTextStroke: "0.3px black",
@@ -202,7 +203,7 @@ shadow-[0_10px_30px_-10px_rgba(0,0,0,0.15),0_25px_40px_-8px_rgba(0,132,209,0.8)]
 
   {/* English */}
   <span
-    className={`text-gray-900 uppercase font-semibold truncate block leading-tight
+    className={` uppercase font-semibold truncate block leading-tight
       ${scrolled ? "opacity-90" : "opacity-100"}
       text-xs sm:text-sm md:text-base lg:text-2xl`}
   >
