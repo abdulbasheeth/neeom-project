@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useCallback, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AIChatBox from '../Ui/AiChatbox'; 
 import { productImages } from "./productImages";
 import { folder2Images } from "./Folder2";
@@ -11,6 +12,7 @@ import { folder5Images } from "./Folder5";
 import { folder7Images } from "./Folder7";
 import { folder6Images } from "./Folder6";
 import { folder10Images } from "./Folder10";
+import { faShirt } from '@fortawesome/free-solid-svg-icons';
 import trolleyIconUrl from "../../assets/bins.svg"; 
 
 export const categories = [
@@ -19,7 +21,7 @@ export const categories = [
   { id: "chemicals", label: "Laundry Chemicals & Accessories", icon: "🫙" },
   { id: "eco-bags", label: "Eco-Friendly Sustainable Bags", icon: "♻️" },
   { id: "non-woven", label: "Non Woven Bags & Covers", icon: "🛍️" },
-  { id: "ppe", label: "Non woven Disposable Essentials PPE", icon: "🥼" },
+ { id: "ppe", label: "Non woven Disposable Essentials PPE", icon: <FontAwesomeIcon icon={faShirt} className="w-4 h-4 md:w-5 md:h-5 block text-sky-500 group-hover:text-white" /> },
   { id: "promotions", label: "Corporate Gifts & Giveaways", icon: "🎁" },
   { id: "cleaning", label: "Cleaning Equipments & Accessories", icon: "🧹" },
   {

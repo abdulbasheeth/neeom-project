@@ -229,7 +229,7 @@ const CategoriesSection = () => {
             <StaggerItem key={cat.id} delay={index * 0.08}>
               <Link
                 to={`/products?category=${cat.id}`}
-                className="group relative flex flex-col items-center justify-center text-center w-full h-[72px] sm:h-[105px] md:h-[100px] rounded-xl bg-white border border-sky-50 p-2.5 transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] shadow-[0_0_12px_rgba(14,165,233,0.12)] hover:shadow-[0_10px_30px_rgba(14,165,233,0.25)] hover:border-sky-200 hover:-translate-y-1.5"
+                className="group relative flex flex-col items-center justify-center text-center w-full h-[100px] sm:h-[135px] md:h-[125px] rounded-xl bg-white border border-sky-50 p-2.5 transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] shadow-[0_0_12px_rgba(14,165,233,0.12)] hover:shadow-[0_10px_30px_rgba(14,165,233,0.25)] hover:border-sky-200 hover:-translate-y-1.5"
               >
                 {/* Top Hover Line */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-gradient-to-r from-transparent via-sky-400 to-transparent group-hover:w-full transition-all duration-500 ease-out" />

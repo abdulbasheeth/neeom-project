@@ -14,6 +14,7 @@ const MusicSoundToggle = ({
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
+  const hasAutoPlayed = useRef(false);   // 👈 Track if autoplay has been attempted
 
   // Determine final colors: custom props take precedence, else use NEOM defaults
   const musicBg = customMusicBg || DEFAULT_MUSIC_BG;
@@ -42,6 +43,30 @@ const MusicSoundToggle = ({
     audio.src = audioUrl;
     audio.load();
   }, [audioUrl]);
+
+  // 👇 NEW: Autoplay when component mounts and audio is ready
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio || !audioUrl || hasAutoPlayed.current) return;
+
+    const attemptAutoplay = () => {
+      audio.play()
+        .then(() => {
+          setIsPlaying(true);
+          hasAutoPlayed.current = true;
+        })
+        .catch((err) => {
+          console.info("Autoplay was prevented by browser. User can click to play.", err);
+        });
+    };
+
+    // Wait for the audio to load enough before trying to play
+    if (audio.readyState >= 2) { // HAVE_CURRENT_DATA or more
+      attemptAutoplay();
+    } else {
+      audio.addEventListener('canplay', attemptAutoplay, { once: true });
+    }
+  }, [audioUrl]); // Re-run only when audioUrl changes (but hasAutoPlayed prevents second attempt)
 
   // Cleanup on unmount
   useEffect(() => {

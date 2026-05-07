@@ -68,7 +68,6 @@ const ContactSection = () => {
     products: 'Product Information',
     quotation: 'Request a Quotation',
     bulk: 'Bulk Order',
-    partnership: 'Partnership Opportunity',
     support: 'After-Sales Support',
   };
 
@@ -116,7 +115,7 @@ const ContactSection = () => {
       <section
         id='contact'
         ref={sectionRef}
-        className="bg-gradient-to-b from-blue-50 to-white py-16 md:py-24 px-6 font-sans text-slate-800 overflow-hidden"
+        className="bg-gradient-to-b from-blue-50 to-white py-10 md:py-10 px-6 font-sans text-slate-800 overflow-hidden"
       >
         <div className="max-w-7xl mx-auto">
           {/* Header */}
@@ -151,9 +150,7 @@ const ContactSection = () => {
                   title="Our Office"
                   body={
                     <>
-                      NEOM Hospitality Supplies LLC
-                      <br />
-                      25°15'52.4"N 55°17'30.5"E
+                     Office No 101-463 1st Floor Mashreq <br /> Building, Al Suq al Kabeer,
                       <br />
                       Dubai, UAE
                     </>
@@ -165,7 +162,7 @@ const ContactSection = () => {
                   body={
                     <>
                       <a href="mailto:info@neomhs.com" className="text-blue-700 hover:text-blue-800 break-all">
-                        info@neomhotelssupplies.com
+                        info@neomhotelsupplies.com
                       </a>
                       <br />
                       <a href="mailto:sales@neomhs.com" className="text-blue-700 hover:text-blue-800 break-all">
@@ -334,7 +331,6 @@ const ContactSection = () => {
                       <option value="products">Product Information</option>
                       <option value="quotation">Request a Quotation</option>
                       <option value="bulk">Bulk Order</option>
-                      <option value="partnership">Partnership Opportunity</option>
                       <option value="support">After-Sales Support</option>
                     </select>
                   </div>

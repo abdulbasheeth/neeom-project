@@ -22,7 +22,7 @@ import { allProducts, categories } from './components/data/product';
 import WhatsAppButton from './components/Ui/WhatsAppButton';
 import CallButton from './components/Ui/CallButton';
 import Music from './components/Ui/MusicPlayer.jsx'
-import playmusic from '../public/Pufino.mp3'
+import playmusic from './assets/Pufino.mp3'
 
 function HomePage() {
   return (

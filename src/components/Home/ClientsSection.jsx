@@ -15,7 +15,7 @@ import client11 from "../../assets/client/clients11.jpg";
 import client12 from "../../assets/client/clients12.jpg";
 import client13 from "../../assets/client/clients13.jpg";
 
-const clientImages = [client1, client2, client3, client4, client5, client6, client7, 
+const clientImages = [client1, client2, client3, client4, client5, client6, client7,
   client8, client10, client11, client12, client13];
 
 // Animation Variants
@@ -54,9 +54,8 @@ const OptimizedImage = ({ src, alt }) => {
         src={src}
         alt={alt}
         onLoad={() => setLoaded(true)}
-        className={`w-full h-full object-contain transition-all duration-700 ease-out ${
-          loaded ? "opacity-100 scale-100" : "opacity-0 scale-90"
-        }`}
+        className={`w-full h-full object-contain transition-all duration-700 ease-out ${loaded ? "opacity-100 scale-100" : "opacity-0 scale-90"
+          }`}
         loading="lazy"
       />
     </div>
@@ -171,7 +170,10 @@ const ClientsSection = () => {
             },
             { number: "No MOQ", icon: "📦" },
             { number: "Competitive Pricing", icon: "🏷️" },
-            { number: "24/7", icon: "💬" },
+            {
+              number: "24/7 Available",
+              icon: <span className="font-bold text-lg leading-none">د.إ</span>,
+            }
           ].map((item, i, arr) => (
             <div key={i} className="text-center group relative flex flex-col items-center">
               <div className="text-2xl mb-1 opacity-70 group-hover:opacity-100 transition-opacity">

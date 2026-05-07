@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../Ui/button";
 import { ArrowRight } from "lucide-react";
-import herovideo from "../../../public/hero-video.mp4"
+import herovideo from "../../assets/hero-video.mp4"
 import { motion } from "framer-motion";
 
 const HeroSection = () => {
